@@ -3,7 +3,7 @@
 set -euxo pipefail
 
 user=$USER
-
+alias sudo='sudo -e'
 sudo hostnamectl set-hostname fedorar
 
 sudo cp -v /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
