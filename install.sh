@@ -68,11 +68,11 @@ cd WhiteSur-icon-theme && ./install.sh  && cd ..
 mkdir -p $HOME/.fonts
 wget https://hub.fastgit.org/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip && unzip -o Meslo.zip -d $HOME/.fonts && rm Meslo.zip
 cd ..
-cp -r .zsh_aliases $HOME/
-cp -r .npmrc $HOME/
-cp -r .cargo $HOME/
-cp -r .gradle $HOME/
-cp -r .m2 $HOME/
-cp -r .pip $HOME/
+cp -rf .zsh_aliases $HOME/
+cp -rf .npmrc $HOME/
+cp -rf .cargo $HOME/
+cp -rf .gradle $HOME/
+cp -rf .m2 $HOME/
+cp -rf .pip $HOME/
 
 
