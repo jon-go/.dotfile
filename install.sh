@@ -3,25 +3,24 @@
 set -euxo pipefail
 
 user=$USER
-alias sudo='sudo -e'
-sudo hostnamectl set-hostname fedora
+sudo -E hostnamectl set-hostname fedora
 
-sudo cp -v /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
-sudo sed -i '/^\[resolutionKMS/a enable=true' /etc/vmware-tools/tools.conf
-sudo systemctl restart vmtoolsd
-sudo sed -e 's/metalink/#metalink/g' -e 's|#baseurl=http://download.example/pub/|baseurl=https://mirror.sjtu.edu.cn/|g' -i.bak /etc/yum.repos.d/*
-sudo mkdir -p /etc/yum.repos.d.bak/
+sudo -E cp -v /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
+sudo -E sed -i '/^\[resolutionKMS/a enable=true' /etc/vmware-tools/tools.conf
+sudo -E systemctl restart vmtoolsd
+sudo -E sed -e 's/metalink/#metalink/g' -e 's|#baseurl=http://download.example/pub/|baseurl=https://mirror.sjtu.edu.cn/|g' -i.bak /etc/yum.repos.d/*
+sudo -E mkdir -p /etc/yum.repos.d.bak/
 
-sudo mv /etc/yum.repos.d/*.bak /etc/yum.repos.d.bak/
-sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
-sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+sudo -E mv /etc/yum.repos.d/*.bak /etc/yum.repos.d.bak/
+sudo -E rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+sudo -E dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
-sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
+sudo -E rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo -E dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+sudo -E mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
 
-sudo dnf update -y
-sudo dnf install neovim zsh java-latest-openjdk java-latest-openjdk-devel snapd maven util-linux-user microsoft-edge-dev git mycli tig gnome-tweaks chrome-gnome-shell chrome-gnome-shell sassc ibus-rime sublime-text -y
+sudo -E dnf update -y
+sudo -E dnf install neovim zsh java-latest-openjdk java-latest-openjdk-devel snapd maven util-linux-user microsoft-edge-dev git mycli tig gnome-tweaks chrome-gnome-shell chrome-gnome-shell sassc ibus-rime sublime-text glib2-devel -y
 
 git config --global url."https://hub.fastgit.org/".insteadOf "https://github.com/"
 git config --global user.name "zhonghao.wang"
@@ -29,12 +28,13 @@ git config --global user.email "wzhh1994@gmail.com"
 git config --global protocol.https.allow always
 
 
-sudo chsh -s /bin/zsh $user
-sudo ln -fs /var/lib/snapd/snap /snap
-sudo snap install --classic code
-sudo snap install intellij-idea-ultimate --classic
-sudo rm -rf $HOME/.oh-my-zsh/
-sudo rm -rf $HOME/.zshrc*
+sudo -E chsh -s /bin/zsh $user
+sudo -E ln -fs /var/lib/snapd/snap /snap
+sudo -E snap install --classic code
+sudo snap install libxml2-utils
+sudo -E snap install intellij-idea-ultimate --classic
+sudo -E rm -rf $HOME/.oh-my-zsh/
+sudo -E rm -rf $HOME/.zshrc*
 echo "$(curl -fsSL https://raw.fastgit.org/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/github.com/hub.fastgit.org/g')" > ./omy.install.sh
 chmod +x ./omy.install.sh
 ./omy.install.sh --unattended
@@ -67,7 +67,7 @@ git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
 cd WhiteSur-icon-theme && ./install.sh  && cd ..
 mkdir -p $HOME/.fonts
 wget https://hub.fastgit.org/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip && unzip -o Meslo.zip -d $HOME/.fonts && rm Meslo.zip
-
+cd ..
 cp .zsh_aliases $HOME/
 cp .npmrc $HOME/
 cp -r .cargo $HOME/
