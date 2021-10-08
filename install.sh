@@ -45,7 +45,7 @@ rm -rf $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 rm -rf $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone --depth=1 https://github.com/zsh-users/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 cat $HOME/.zshrc | sed  "$(cat $HOME/.zshrc  | grep -n ^ZSH_THEME | awk -F: '{ print $1 }')c ZSH_THEME=\"powerlevel10k/powerlevel10k\"" > $HOME/.zshrc
 
