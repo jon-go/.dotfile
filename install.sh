@@ -4,7 +4,7 @@ set -euxo pipefail
 
 user=$USER
 alias sudo='sudo -e'
-sudo hostnamectl set-hostname fedorar
+sudo hostnamectl set-hostname fedora
 
 sudo cp -v /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
 sudo sed -i '/^\[resolutionKMS/a enable=true' /etc/vmware-tools/tools.conf
