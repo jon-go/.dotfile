@@ -96,4 +96,10 @@ rm -rf $git_home/.tmux
 git clone https://github.com/gpakosz/.tmux.git $git_home/.tmux
 ln -s -f $git_home/.tmux/.tmux.conf ~/.tmux.conf
 cp $git_home/.tmux/.tmux.conf.local ~/.tmux.conf.local
+
 cat $git_home/.tmux.conf >>  ~/.tmux.conf
+cat $git_home/.zsh_export >> ~/.zshrc
+
+curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.39.0/install.sh  | bash
+NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+$NVM_DIR/nvm.sh install node
