@@ -90,6 +90,7 @@ cp -rf .cargo $HOME/
 cp -rf .gradle $HOME/
 cp -rf .m2 $HOME/
 cp -rf .pip $HOME/
+cp -rf .p10k.zsh $HOME/
 
 curl -sLf https://spacevim.org/install.sh | bash
 rm -rf $git_home/.tmux
