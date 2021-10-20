@@ -88,6 +88,7 @@ cp -rf .m2 $HOME/
 cp -rf .pip $HOME/
 
 curl -sLf https://spacevim.org/install.sh | bash
+rm -rf $git_home/.tmux
 git clone https://github.com/gpakosz/.tmux.git $git_home/.tmux
 ln -s -f $git_home/.tmux/.tmux.conf ~/.tmux.conf
 cp $git_home/.tmux/.tmux.conf.local ~/.tmux.conf.local
