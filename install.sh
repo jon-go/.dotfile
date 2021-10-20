@@ -6,9 +6,11 @@ user=$USER
 git_home=$(pwd)
 sudo -E hostnamectl set-hostname fedora
 
-sudo -E cp -v /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
-sudo -E sed -i '/^\[resolutionKMS/a enable=true' /etc/vmware-tools/tools.conf
-sudo -E systemctl restart vmtoolsd
+### just for vmware auto size
+# sudo -E cp -v /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
+# sudo -E sed -i '/^\[resolutionKMS/a enable=true' /etc/vmware-tools/tools.conf
+# sudo -E systemctl restart vmtoolsd
+
 sudo -E sed -e 's/metalink/#metalink/g' -e 's|#baseurl=http://download.example/pub/|baseurl=https://mirror.sjtu.edu.cn/|g' -i.bak /etc/yum.repos.d/*
 sudo -E mkdir -p /etc/yum.repos.d.bak/
 
