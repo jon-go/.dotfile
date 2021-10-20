@@ -27,7 +27,7 @@ sudo -E dnf remove -y docker docker-common docker-selinux docker-engine
 sudo -E wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo sed -i 's+download.docker.com+mirror.sjtu.edu.cn/docker-ce+' /etc/yum.repos.d/docker-ce.repo
 sudo mkdir -p /etc/docker/
-sudo echo '{"registry-mirrors": ["https://docker.mirrors.sjtug.sjtu.edu.cn"]}' > /etc/docker/daemon.json
+sudo bash -c "echo '{\"registry-mirrors\": [\"https://docker.mirrors.sjtug.sjtu.edu.cn\"]}' > /etc/docker/daemon.json"
 sudo -E dnf install -y yum-utils device-mapper-persistent-data lvm2 docker-ce
 
 
