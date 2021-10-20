@@ -70,9 +70,11 @@ export SASS=sassc && cd dash-to-dock && make && make install && cd $git_home
 # themes
 rm -rf WhiteSur-gtk-theme
 git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
-cd WhiteSur-gtk-theme && ./install.sh -i fedora -N mojave && cd $git_home
+cd WhiteSur-gtk-theme && ./install.sh -i fedora -N mojave && ./tweaks.sh -f -d -c dark && cd $git_home
 
 git clone -b wallpapers --depth=1 https://github.com/vinceliuice/WhiteSur-gtk-theme.git WhiteSur-gtk-theme/wallpapers
+
+cd WhiteSur-gtk-theme/wallpapers && sudo ./install-gnome-backgrounds.sh && ./install-wallpapers.sh && cd $git_home
 
 rm -rf WhiteSur-icon-theme
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
