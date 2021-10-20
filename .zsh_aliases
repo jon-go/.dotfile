@@ -26,6 +26,7 @@ alias apt-get="sudo dnf"
 alias dnf="sudo dnf"
 alias q="exit"
 alias pu='pip-review --auto'
+alias vi="nvim"
 alias nu='sudo npm update -g'
 alias du='sudo dnf update -y'
 alias sysd="sudo systemctl disable"
