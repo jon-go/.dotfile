@@ -4,6 +4,8 @@ set -euxo pipefail
 
 user=$USER
 git_home=$(pwd)
+git pull
+
 sudo -E hostnamectl set-hostname fedora
 
 ### just for vmware auto size
