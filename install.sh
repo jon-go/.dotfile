@@ -3,6 +3,7 @@
 set -euxo pipefail
 
 user=$USER
+git_home=$(pwd)
 sudo -E hostnamectl set-hostname fedora
 
 sudo -E cp -v /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
@@ -54,25 +55,24 @@ cat $HOME/.zshrc | sed  "$(cat $HOME/.zshrc  | grep -n ^plugins= | awk -F: '{ pr
 # dock
 rm -rf dash-to-dock
 git clone -b ewlsh/gnome-40 https://github.com/ewlsh/dash-to-dock.git
-export SASS=sassc && cd dash-to-dock && make && make install && cd ..
+export SASS=sassc && cd dash-to-dock && make && make install && cd $git_home
 # themes
 rm -rf WhiteSur-gtk-theme
 git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
-cd WhiteSur-gtk-theme && ./install.sh -i fedora -N mojave && cd ..
+cd WhiteSur-gtk-theme && ./install.sh -i fedora -N mojave && cd $git_home
 
 git clone -b wallpapers --depth=1 https://github.com/vinceliuice/WhiteSur-gtk-theme.git WhiteSur-gtk-theme/wallpapers
 
 rm -rf WhiteSur-icon-theme
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
-cd WhiteSur-icon-theme && ./install.sh  && cd ..
+cd WhiteSur-icon-theme && ./install.sh  && cd $git_home
 mkdir -p $HOME/.fonts
 wget https://hub.fastgit.org/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip && unzip -o Meslo.zip -d $HOME/.fonts && rm Meslo.zip
-cd ..
+cd $git_home
 cp -rf .zsh_aliases $HOME/
 cp -rf .npmrc $HOME/
 cp -rf .cargo $HOME/
 cp -rf .gradle $HOME/
 cp -rf .m2 $HOME/
 cp -rf .pip $HOME/
-
 
