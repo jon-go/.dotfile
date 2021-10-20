@@ -96,4 +96,4 @@ rm -rf $git_home/.tmux
 git clone https://github.com/gpakosz/.tmux.git $git_home/.tmux
 ln -s -f $git_home/.tmux/.tmux.conf ~/.tmux.conf
 cp $git_home/.tmux/.tmux.conf.local ~/.tmux.conf.local
-echo "tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} |temp |#(curl wttr.in?format=\"%%c%%20%%t\") |\uF017 %R |\uF007 #{username}#{root} | \uFBC5#{hostname} '" >>  ~/.tmux.conf
+cat $git_home/.tmux.conf >>  ~/.tmux.conf
