@@ -23,6 +23,17 @@ sudo -E mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.r
 sudo -E dnf update -y
 sudo -E dnf install neovim zsh java-latest-openjdk java-latest-openjdk-devel snapd maven util-linux-user microsoft-edge-dev git mycli tig gnome-tweaks chrome-gnome-shell chrome-gnome-shell sassc ibus-rime sublime-text glib2-devel -y
 
+sudo dnf remove docker docker-common docker-selinux docker-engine
+sudo dnf install -y yum-utils device-mapper-persistent-data lvm2
+sudo wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo sed -i 's+download.docker.com+mirror.sjtu.edu.cn/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+sudo mkdir -p /etc/docker/
+sudo echo '{"registry-mirrors": ["https://docker.mirrors.sjtug.sjtu.edu.cn"]}' > /etc/docker/daemon.json
+
+
+sudo -E flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo -E flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
+
 git config --global url."https://hub.fastgit.org/".insteadOf "https://github.com/"
 git config --global user.name "zhonghao.wang"
 git config --global user.email "wzhh1994@gmail.com"
